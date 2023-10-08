@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Евгений Калинин](https://up.htmlacademy.ru/javascript/30/user/1977371).
-* Наставник: `Неизвестно`.
+* Наставник: [Сергей Остаповец] (https://htmlacademy.ru/profile/seraphim)
 
 ---
 
