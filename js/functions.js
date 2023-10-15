@@ -1,7 +1,6 @@
 // Проверка длины строки с заданным числом
-function checkingString(string, length) {
-  return string.length <= length;
-}
+const checkingString = (string, length) => string.length <= length;
+
 
 // eslint-disable-next-line no-console
 console.log(checkingString);
