@@ -24,8 +24,8 @@ const renderComments = () => {
   commentsCountShow += COMMENTS_COUT_SHOW;
 
   if (commentsCountShow >= comments.length) {
-     commentsLoaderElement.classList.add('hidden');
-     commentsCountShow = comments.length;
+    commentsLoaderElement.classList.add('hidden');
+    commentsCountShow = comments.length;
   } else {
     commentsLoaderElement.classList.remove('hidden');
   }
