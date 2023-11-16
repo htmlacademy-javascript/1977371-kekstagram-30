@@ -20,7 +20,10 @@ const COMMENTS = [
   'Вау!!!',
   'Просто нет слов, как это круто!',
   'Великолепно',
-  'Нуууу, такое себе, если честно:(',
+  'Такое себе, если честно:(',
+  'Лучшее',
+  'Просто космос',
+  'Невероятная красота',
 ];
 
 const NAMES = [
@@ -76,8 +79,8 @@ const createComment = () => ({
 
 const createPicture = (index) => ({
   id: index,
-  url: `photo/${index}.jpg`,
-  descreption: getRandomArrayElment(DESCREPTION),
+  url: `photos/${index}.jpg`,
+  description: getRandomArrayElment(DESCREPTION),
   likes: getRandomInteger (LIKE_MIN, LIKE_MAX),
   comments: Array.from (
     {length: getRandomInteger(0, COMMENT_COUNT)},

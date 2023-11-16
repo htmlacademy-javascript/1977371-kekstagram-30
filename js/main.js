@@ -1,7 +1,4 @@
 import {getPictures} from './data.js';
-import {renderThumbnails} from './thumbnail.js';
+import {renderGellary} from './gallery.js';
 
-renderThumbnails(getPictures());
-
-// eslint-disable-next-line no-console
-// console.log(getPictures());
+renderGellary(getPictures());
