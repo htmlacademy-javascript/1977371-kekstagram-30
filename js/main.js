@@ -1,4 +1,18 @@
-import {getPictures} from './data.js';
-import {renderGellary} from './gallery.js';
+import { getPictures } from './api.js';
+import { renderGellary } from './gallery.js';
+import { showErrorMessage } from './util.js';
+import { setFormSubmit } from './form.js';
+import { initFilter } from './filter.js';
 
-renderGellary(getPictures());
+getPictures()
+  .then((pictures) => {
+    renderGellary(pictures);
+    initFilter(pictures);
+  })
+  .catch(
+    () => {
+      showErrorMessage();
+    }
+  );
+
+setFormSubmit();
