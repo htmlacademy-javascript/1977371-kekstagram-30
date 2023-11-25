@@ -1,7 +1,18 @@
-import {getPictures} from './data.js';
-import {renderThumbnails} from './thumbnail.js';
+import { getPictures } from './api.js';
+import { renderGellary } from './gallery.js';
+import { showErrorMessage } from './util.js';
+import { setFormSubmit } from './form.js';
+import { initFilter } from './filter.js';
 
-renderThumbnails(getPictures());
+getPictures()
+  .then((pictures) => {
+    renderGellary(pictures);
+    initFilter(pictures);
+  })
+  .catch(
+    () => {
+      showErrorMessage();
+    }
+  );
 
-// eslint-disable-next-line no-console
-// console.log(getPictures());
+setFormSubmit();
