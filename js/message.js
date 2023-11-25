@@ -11,8 +11,8 @@ const onBodyClick = (evt) => {
 };
 
 function hideMessage() {
-  const existElement = document.querySelector('.success') || document.querySelector('.error');
-  existElement.remove();
+  const existsElement = document.querySelector('.success') || document.querySelector('.error');
+  existsElement.remove();
   document.removeEventListener('keydown', onDocumentKeyDown);
   document.body.removeEventListener('click', onBodyClick);
 }
