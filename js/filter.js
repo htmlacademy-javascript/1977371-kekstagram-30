@@ -87,6 +87,7 @@ const repaint = (evt, filter, data) => {
   evt.target.classList.add('img-filters__button--active');
 };
 
+
 const debouncedRepain = debounce(repaint);
 
 const onFormElementClick = (evt) => {
