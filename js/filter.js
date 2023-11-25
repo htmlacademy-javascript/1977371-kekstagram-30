@@ -1,6 +1,5 @@
-import { renderGellary } from './gallery';
-import { debounce, getRandomInteger } from './util';
-
+import { renderGellary } from './gallery.js';
+import { debounce } from './util.js';
 
 const MAX_RANDOM_FILTER = 10;
 const FilterEnum = {
@@ -14,6 +13,17 @@ const filtersFormElement = document.querySelector('.img-filters__form');
 const defaultBtn = filtersFormElement.querySelector('#filter-default');
 const randomBtn = filtersFormElement.querySelector('#filter-random');
 const discussedBtn = filtersFormElement.querySelector('#filter-discussed');
+
+// Получение рандомного числа
+const getRandomInteger = (min, max) => {
+  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
+  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
+  const result = Math.random() * (upper - lower + 1) + lower;
+
+  return Math.floor(result);
+};
+
+// Создание уникальных ключей.
 
 const createUniqueId = (min, max) => {
   const previousValues = [];
@@ -31,13 +41,11 @@ const createUniqueId = (min, max) => {
   };
 };
 
-const createInexList = (data) => {
+const createInexList = (pictures) => {
   const randomIndexList = [];
+  const index = createUniqueId(0, pictures.length - 1);
   while (randomIndexList.length < MAX_RANDOM_FILTER) {
-    const index = createUniqueId(0, data.length);
-    if (!randomIndexList.includes(index)){
-      randomIndexList.push(index);
-    }
+    randomIndexList.push(index());
   }
   return randomIndexList;
 };

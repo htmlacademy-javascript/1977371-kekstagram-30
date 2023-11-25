@@ -1,8 +1,8 @@
 import { resetScale } from './scale.js';
 import { init as initEffect, reset as resetEffect } from './effect.js';
-import { sendData } from './api.js';
+import { sendPictures } from './api.js';
 import { showSuccessMessage, showErrorMessage } from './message.js';
-import { isEscapeKey } from './utils.js';
+import { isEscapeKey } from './util.js';
 
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const MAX_HASHTAG_COUNT = 5;
@@ -122,7 +122,7 @@ const onFormSubmit = async (evt) => {
   }
   try {
     blockSubmitButton();
-    await sendData(new FormData(evt.target));
+    await sendPictures(new FormData(evt.target));
     unblockSubmitButton();
     closeForm();
     showSuccessMessage();
