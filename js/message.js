@@ -3,6 +3,13 @@ import { isEscapeKey } from './util';
 const successMessageElement = document.querySelector('#success').content.querySelector('.succes');
 const errorMessageElement = document.querySelector('#error').content.querySelector('.error');
 
+const onBodyClick = (evt) => {
+  if(evt.target.closest('.success__inner') || evt.target.closest('.error__inner')) {
+    return;
+  }
+  hideMessage();
+};
+
 function hideMessage() {
   const existElement = document.querySelector('.success') || document.querySelector('.error');
   existElement.remove();
@@ -21,12 +28,6 @@ function onDocumentKeyDown(evt) {
   }
 }
 
-function onBodyClick() {
-  if (evt.target.closest('.success__inner') || (evt.target.closest('.error__inner'))) {
-    return;
-  }
-  hideMessage();
-}
 
 function showMessage(element, buttonClass) {
   document.body.append(element);
