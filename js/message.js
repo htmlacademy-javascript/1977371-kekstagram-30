@@ -17,7 +17,7 @@ function hideMessage() {
   document.body.removeEventListener('click', onBodyClick);
 }
 
-function onCloseButtonClick() {
+function onCloseButtunClick() {
   hideMessage();
 }
 
@@ -29,12 +29,13 @@ function onDocumentKeyDown(evt) {
 }
 
 
-function showMessage(element, buttonClass) {
+const showMessage = (element, buttonClass) => {
   document.body.append(element);
-  document.addEventListener('click', onBodyClick);
+  document.body.addEventListener('click', onBodyClick);
+  const button = element.querySelector(buttonClass);
+  button.addEventListener('click', onCloseButtunClick);
   document.addEventListener('keydown', onDocumentKeyDown);
-  element.querySelector(buttonClass).addEventListner('click', onCloseButtonClick);
-}
+};
 
 function showSuccessMessage() {
   showMessage(successMessageElement, '.success__button');
