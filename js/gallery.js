@@ -15,7 +15,6 @@ const renderGellary = (pictures) => {
     const thumbnailId = + thumbnail.dataset.thumbnailId;
     const pictureDate = pictures.find(({id}) => id === thumbnailId);
 
-    // TODO Написать функцию возврата полного изображения
     showPicture(pictureDate);
   });
 

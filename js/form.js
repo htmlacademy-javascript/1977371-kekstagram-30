@@ -29,7 +29,7 @@ const imgUploadOverlayElement = formElement.querySelector('.img-upload__overlay'
 const cancelButton = formElement.querySelector('#upload-cancel');
 const textDescriptionElement = formElement.querySelector('.text__description');
 const submitButton = formElement.querySelector('#upload-submit');
-const imgDefaultElement = formElement.querySelector('#img-upload__default');
+const imgElement = formElement.querySelector('#img-upload__default');
 const PreviewElements = formElement.querySelectorAll('.effects__preview');
 
 const pristine = new Pristine(formElement, {
@@ -54,16 +54,17 @@ const openForm = () => {
   const file = uploadFileElement.files[0];
   const fileName = file.name.toLowerCase();
 
-  const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
-  if (file && matches) {
-    imgDefaultElement.src = URL.createObjectURL(file);
-    PreviewElements.forEach ((element) => {
-      element.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+  const onOpenForm = FILE_TYPES.some((it) => fileName.endsWith(it));
+  if (file && onOpenForm) {
+    imgElement.src = URL.createObjectURL(file);
+    PreviewElements.forEach ((preview) => {
+      preview.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
     });
   }
 
   document.addEventListener('keydown', onDocumentKeydown);
 };
+
 
 const closeForm = () => {
   formElement.reset();
@@ -106,8 +107,11 @@ const isTextFiledFocused = () =>
   document.activeElement === textDescriptionElement;
 
 
+function isErrorMessageExists() {
+  return Boolean(document.querySelector('.error'));
+}
+
 function onDocumentKeydown(evt) {
-  const isErrorMessageExists = Boolean(document.querySelector('.error'));
   if (isEscapeKey(evt) && !isTextFiledFocused() && !isErrorMessageExists) {
     evt.preventDefault();
     closeForm();
